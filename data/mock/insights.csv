@@ -1,0 +1,9 @@
+insight_id,insight_type,account_name,owner,created_at,impact_type,impact_value
+INS-001,High-Value Deal Stalled,Acme Corp,Alice,2026-01-01,Revenue_Risk,50000
+INS-002,Pricing Discount Anomaly,Globex Inc,Bob,2026-01-02,Margin_Risk,30000
+INS-003,Renewal Risk Flagged,Initech,Carol,2026-01-03,Churn_Risk,45000
+INS-004,High-Value Deal Stalled,Umbrella Corp,David,2026-01-01,Revenue_Risk,80000
+INS-005,Renewal Risk Flagged,Stark Industries,Alice,2026-01-04,Churn_Risk,25000
+INS-006,Pricing Discount Anomaly,Wayne Enterprises,Bob,2026-01-03,Margin_Risk,20000
+INS-007,High-Value Deal Stalled,Wonka Industries,Carol,2026-01-02,Revenue_Risk,60000
+INS-008,Renewal Risk Flagged,Oscorp,David,2026-01-05,Churn_Risk,40000
