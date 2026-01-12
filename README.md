@@ -52,6 +52,7 @@ Before running the application, you need to set up a Connected App in your Sales
     *   After saving, you will be taken to the object's page. The **API Name** should be `Decision_Insight__c`.
     *   **Fields**: Create the following custom fields on the `Decision_Insight__c` object:
         *   `Title__c` (Text, 255)
+        *   `Domain__c` (Picklist: Security, Finance, Sales, HR, Other)
         *   `Description__c` (Long Text Area)
         *   `Impact__c` (Number, 1, 0)
         *   `Risk__c` (Number, 1, 0)
