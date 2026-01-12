@@ -99,7 +99,7 @@ export default function TableauDashboard({
             📊 Dashboard Coming Soon
           </div>
           <div className="text-sm mb-3">
-            We're currently integrating with Tableau Next Embedding (Salesforce CRM Analytics).
+            We&apos;re currently integrating with Tableau Next Embedding (Salesforce CRM Analytics).
             The dashboard will be available soon!
           </div>
           <div className="text-xs opacity-75 mt-4 pt-3 border-t border-red-200">
@@ -131,7 +131,7 @@ export default function TableauDashboard({
       <Script
         src={`${instanceUrl}/analytics/wave/sdk/sdk.js`}
         onLoad={() => setSdkLoaded(true)}
-        onError={() => setError('Failed to load CRM Analytics SDK')}
+        onError={() => setError('Failed to load CRM Analytics SDK (Coming Soon)')}
       />
 
       {/* Load Dashboard Button */}

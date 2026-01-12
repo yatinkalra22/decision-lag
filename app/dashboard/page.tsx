@@ -65,10 +65,10 @@ export default async function DashboardPage() {
                 Coming Soon
               </span>
             </div>
-            <p className="mt-2 text-gray-600">
-              We're integrating with Tableau Next Embedding (Salesforce CRM Analytics)
-            </p>
-          </div>
+                      <p className="mt-2 text-gray-600">
+                        We&apos;re integrating with Tableau Next Embedding (Salesforce CRM Analytics)
+                      </p> 
+              </div>
 
           {/* Pass session data to client component */}
           <DashboardClient
