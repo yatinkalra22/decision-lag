@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 interface Insight {
   Id: string;
@@ -15,6 +16,7 @@ export default function CreateViewEventForm() {
   const [source, setSource] = useState('WebApp');
   const [loading, setLoading] = useState(false);
   const [insightsLoading, setInsightsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchInsights = async () => {
@@ -72,6 +74,7 @@ export default function CreateViewEventForm() {
       });
 
       toast.success('View event logged successfully!', { id: toastId });
+      router.refresh();
     } catch (err: any) {
       toast.error(err.message, { id: toastId });
     } finally {
