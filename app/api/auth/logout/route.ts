@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
     session.destroy();
 
     // Explicitly delete the cookie as a fallback.
-    cookies().delete('decision-debt-studio-session');
+    cookies().delete('decision-lag-session');
 
     // Redirect to the homepage with a cache-busting parameter.
     const url = new URL('/', req.url);

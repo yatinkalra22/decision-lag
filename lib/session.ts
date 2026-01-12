@@ -11,7 +11,7 @@ if (!sessionPassword || sessionPassword.length < 32) {
 
 export const sessionOptions: SessionOptions = {
   password: sessionPassword,
-  cookieName: 'decision-debt-studio-session',
+  cookieName: 'decision-lag-session',
   cookieOptions: {
     secure: process.env.NODE_ENV === 'production',
   },

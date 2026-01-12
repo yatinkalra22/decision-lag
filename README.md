@@ -1,4 +1,4 @@
-# Decision Debt Studio
+# Decision Lag
 
 This is a Next.js application that integrates with Salesforce to help manage "decision debt". It allows users to create Decision Insights and log View Events for those insights.
 
@@ -25,7 +25,7 @@ Before running the application, you need to set up a Connected App in your Sales
 1.  **Create a Connected App**:
     *   In your Salesforce org, go to **Setup** -> **App Manager** -> **New Connected App**.
     *   Fill in the basic information:
-        *   **Connected App Name**: Decision Debt Studio
+        *   **Connected App Name**: Decision Lag
         *   **API Name**: Decision_Debt_Studio
         *   **Contact Email**: your email
     *   Enable OAuth Settings:
@@ -92,7 +92,7 @@ Before running the application, you need to set up a Connected App in your Sales
 1.  **Clone the repository**:
     ```bash
     git clone <repository_url>
-    cd decision-debt-studio
+    cd decision-lag
     ```
 
 2.  **Install dependencies**:

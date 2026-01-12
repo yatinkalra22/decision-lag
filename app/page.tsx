@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <main className="container mx-auto px-4 py-8">
       <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">Decision Debt Studio</h1>
+        <h1 className="text-3xl font-bold text-gray-800">Decision Lag</h1>
         <nav>
           {session.isLoggedIn ? (
             <div className="flex items-center gap-4">

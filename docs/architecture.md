@@ -5,7 +5,7 @@ This document outlines the architecture of the Decision Lag application.
 ```
          ┌────────────────────────┐
          │ External Web App        │  (Next.js / Node)
-         │ "Decision Debt Studio"  │
+         │ "Decision Lag"  │
          └───────────┬────────────┘
                      │ REST API calls
                      ▼
