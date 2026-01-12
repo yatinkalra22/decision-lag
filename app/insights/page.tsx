@@ -1,22 +1,20 @@
 import { getSession } from '@/lib/session';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import InsightsList from '../components/InsightsList'; // Import the new client component
+import InsightsList from '../components/InsightsList'; // Still using a client component for filters/display
 
-// Update the interface to include Domain__c
 interface Insight {
   Id: string;
   Title__c: string;
-  Domain__c: string | null;
   Debt_Score__c: number;
   CreatedDate: string;
   View_Count__c: number;
   Last_Viewed_At__c: string;
+  Slack_Alert_Sent__c: boolean;
 }
 
-// Update the SOQL query to fetch Domain__c
 async function getInsights(accessToken: string, instanceUrl: string): Promise<Insight[]> {
-    const query = "SELECT Id, Title__c, Domain__c, Debt_Score__c, CreatedDate, View_Count__c, Last_Viewed_At__c FROM Decision_Insight__c ORDER BY CreatedDate DESC LIMIT 100";
+    const query = "SELECT Id, Title__c, Debt_Score__c, CreatedDate, View_Count__c, Last_Viewed_At__c, Slack_Alert_Sent__c FROM Decision_Insight__c ORDER BY CreatedDate DESC LIMIT 100";
     const res = await fetch(`${instanceUrl}/services/data/v60.0/query?q=${encodeURIComponent(query)}`, {
       method: 'GET',
       headers: {

@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 
 export default function CreateInsightForm() {
   const [title, setTitle] = useState('');
-  const [domain, setDomain] = useState(''); // New state for Domain
   
   const [impact, setImpact] = useState(3);
   const [risk, setRisk] = useState(3);
@@ -22,17 +21,12 @@ export default function CreateInsightForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!domain) {
-      toast.error('Please select a domain.');
-      return;
-    }
     setLoading(true);
     const toastId = toast.loading('Creating insight...');
 
     const debtScore = calculateDebtScore();
     const data = {
       Title__c: title,
-      Domain__c: domain, // Add domain to payload
       Impact__c: impact,
       Risk__c: risk,
       Confidence__c: confidence,
@@ -56,7 +50,6 @@ export default function CreateInsightForm() {
       router.refresh();
       // Reset form
       setTitle('');
-      setDomain(''); // Reset domain
       
       setImpact(3);
       setRisk(3);
@@ -69,21 +62,11 @@ export default function CreateInsightForm() {
     }
   };
 
-  const domainOptions = ["Security", "Finance", "Sales", "HR", "Other"];
-
   return (
     <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow">
       <div>
         <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title <span className="text-red-500">*</span></label>
         <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"/>
-      </div>
-
-      <div>
-        <label htmlFor="domain" className="block text-sm font-medium text-gray-700">Domain <span className="text-red-500">*</span></label>
-        <select id="domain" value={domain} onChange={(e) => setDomain(e.target.value)} required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-            <option value="" disabled>Select a domain</option>
-            {domainOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-        </select>
       </div>
       
       <div className="grid grid-cols-2 gap-4">
