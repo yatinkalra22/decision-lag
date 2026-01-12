@@ -47,7 +47,7 @@ export default function CreateViewEventForm() {
 
     const data = {
       Insight__c: selectedInsight,
-      ViewerName__c: viewerName,
+      Viewer_Name__c: viewerName,
       Source__c: source,
     };
 

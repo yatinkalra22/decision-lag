@@ -69,8 +69,8 @@ Before running the application, you need to set up a Connected App in your Sales
     *   The **API Name** should be `Decision_View_Event__c`.
     *   **Fields**: Create the following custom fields on the `Decision_View_Event__c` object:
         *   `Insight__c` (Lookup Relationship to `Decision Insight`)
-        *   `ViewerName__c` (Text, 255)
-        *   `ViewedAt__c` (Date/Time)
+        *   `Viewer_Name__c` (Text, 255)
+        *   `Viewed_At__c` (Date/Time)
         *   `Source__c` (Picklist: WebApp, Tableau)
     
     **c) Check Permissions**

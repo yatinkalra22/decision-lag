@@ -12,11 +12,11 @@ export async function POST(req: NextRequest) {
     const { accessToken, instanceUrl } = session;
 
     // Basic validation
-    if (!body.Insight__c || !body.ViewerName__c || !body.Source__c) {
+    if (!body.Insight__c || !body.Viewer_Name__c || !body.Source__c) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
     
-    body.ViewedAt__c = new Date().toISOString();
+    body.Viewed_At__c = new Date().toISOString();
 
     const res = await fetch(`${instanceUrl}/services/data/v60.0/sobjects/Decision_View_Event__c/`, {
       method: 'POST',
