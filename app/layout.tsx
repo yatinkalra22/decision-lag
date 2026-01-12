@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Decision Lag",
   description: "Manage your decision debt with Salesforce",
+  icons: {
+    icon: '/assets/images/logo.png',
+  },
 };
 
 export default function RootLayout({
