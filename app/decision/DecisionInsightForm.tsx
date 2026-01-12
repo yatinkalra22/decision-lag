@@ -94,7 +94,7 @@ export default function DecisionInsightForm() {
               {i}
             </option>
           ))}
-        </.select>
+        </select>
       </div>
       <div>
         <label htmlFor="risk" className="block text-sm font-medium text-gray-700">

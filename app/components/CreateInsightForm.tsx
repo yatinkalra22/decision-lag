@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 export default function CreateInsightForm() {
   const [title, setTitle] = useState('');
@@ -11,6 +12,7 @@ export default function CreateInsightForm() {
   const [confidence, setConfidence] = useState(80);
   const [status, setStatus] = useState('New');
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const calculateDebtScore = () => {
     const daysOpen = 5; // MVP assumption
@@ -45,6 +47,7 @@ export default function CreateInsightForm() {
       }
 
       toast.success('Insight created successfully!', { id: toastId });
+      router.refresh();
       // Reset form
       setTitle('');
       
