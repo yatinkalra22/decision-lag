@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 export default function CreateInsightForm() {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  
   const [impact, setImpact] = useState(3);
   const [risk, setRisk] = useState(3);
   const [confidence, setConfidence] = useState(80);
@@ -25,7 +25,6 @@ export default function CreateInsightForm() {
     const debtScore = calculateDebtScore();
     const data = {
       Title__c: title,
-      Description__c: description,
       Impact__c: impact,
       Risk__c: risk,
       Confidence__c: confidence,
@@ -48,7 +47,7 @@ export default function CreateInsightForm() {
       toast.success('Insight created successfully!', { id: toastId });
       // Reset form
       setTitle('');
-      setDescription('');
+      
       setImpact(3);
       setRisk(3);
       setConfidence(80);
@@ -66,10 +65,7 @@ export default function CreateInsightForm() {
         <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title <span className="text-red-500">*</span></label>
         <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"/>
       </div>
-      <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-        <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} rows={3} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"/>
-      </div>
+      
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label htmlFor="impact" className="block text-sm font-medium text-gray-700">Impact <span className="text-red-500">*</span></label>

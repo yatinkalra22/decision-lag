@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function DecisionInsightForm() {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  
   const [impact, setImpact] = useState(1);
   const [risk, setRisk] = useState(1);
   const [confidence, setConfidence] = useState(50);
@@ -26,7 +26,6 @@ export default function DecisionInsightForm() {
     const debtScore = calculateDebtScore();
     const data = {
       Title__c: title,
-      Description__c: description,
       Impact__c: impact,
       Risk__c: risk,
       Confidence__c: confidence,
@@ -50,7 +49,7 @@ export default function DecisionInsightForm() {
 
       setSuccess(true);
       setTitle('');
-      setDescription('');
+      
       setImpact(1);
       setRisk(1);
       setConfidence(50);
@@ -78,19 +77,7 @@ export default function DecisionInsightForm() {
           required
         />
       </div>
-      <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-          Description
-        </label>
-        <textarea
-          name="description"
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          rows={3}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-        />
-      </div>
+      
       <div>
         <label htmlFor="impact" className="block text-sm font-medium text-gray-700">
           Impact (1-5)
