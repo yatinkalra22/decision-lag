@@ -22,7 +22,7 @@ export default function InsightsList({ insights }: InsightsListProps) {
   const [filterDomain, setFilterDomain] = useState('All');
 
   const uniqueDomains = useMemo(() => {
-    const domains = [...new Set(insights.map(insight => insight.Domain__c).filter(domain => domain != null))];
+    const domains = Array.from(new Set(insights.map(insight => insight.Domain__c).filter(domain => domain != null)));
     if (insights.some(insight => !insight.Domain__c)) {
       if (!domains.includes('Unassigned')) {
           domains.push('Unassigned');
