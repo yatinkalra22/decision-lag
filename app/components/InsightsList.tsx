@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 // Define the shape of an insight record
 interface Insight {
@@ -18,22 +18,27 @@ interface InsightsListProps {
   insights: Insight[];
 }
 
-const domainOptions = ["All", "Security", "Finance", "Sales", "HR", "Other"];
-
 export default function InsightsList({ insights }: InsightsListProps) {
   const [filterDomain, setFilterDomain] = useState('All');
 
-  const filteredInsights = insights.filter(insight => {
-    if (filterDomain === 'All') return true;
-    if (!insight.Domain__c && filterDomain === 'Unassigned') return true;
-    return insight.Domain__c === filterDomain;
-  });
+  const uniqueDomains = useMemo(() => {
+    const domains = [...new Set(insights.map(insight => insight.Domain__c).filter(domain => domain != null))];
+    if (insights.some(insight => !insight.Domain__c)) {
+      if (!domains.includes('Unassigned')) {
+          domains.push('Unassigned');
+      }
+    }
+    domains.sort();
+    return domains;
+  }, [insights]);
 
-  // Add "Unassigned" to filter if any insights are missing a domain
-  const availableDomains = new Set(insights.map(i => i.Domain__c).filter(Boolean));
-  if (insights.some(i => !i.Domain__c)) {
-    availableDomains.add('Unassigned');
-  }
+  const filteredInsights = useMemo(() => {
+    return insights.filter(insight => {
+        if (filterDomain === 'All') return true;
+        if (filterDomain === 'Unassigned') return !insight.Domain__c;
+        return insight.Domain__c === filterDomain;
+      });
+  }, [insights, filterDomain]);
 
   return (
     <div>
@@ -47,7 +52,7 @@ export default function InsightsList({ insights }: InsightsListProps) {
                 className="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             >
                 <option value="All">All</option>
-                {Array.from(availableDomains).sort().map(domain => (
+                {uniqueDomains.map(domain => (
                     <option key={domain} value={domain}>{domain}</option>
                 ))}
             </select>
@@ -59,7 +64,7 @@ export default function InsightsList({ insights }: InsightsListProps) {
           <thead className="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Domain</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font--medium text-gray-500 uppercase tracking-wider">Domain</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Debt Score</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created Date</th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">View Count</th>
